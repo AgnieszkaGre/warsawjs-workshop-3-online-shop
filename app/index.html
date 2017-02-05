@@ -7,11 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="app.css">
 </head>
-<body>
+<body ng-controller="ApplicationController as ctrl">
 
-  <div ng-controller="ApplicationController as ctrl">
-    Hello {{ ctrl.what }}!
-  </div>
+  <page-header>
+    <page-header-controls>
+      <shop-cart items="ctrl.inCartProducts"></shop-cart>
+    </page-header-controls>
+    <page-header-bar>
+      <search-bar></search-bar>
+    </page-header-bar>
+  </page-header>
+  <page-content>
+    <!-- <promotions-list items="ctrl.promotedProducts" on-add-to-cart="ctrl.addProductToCart(product, amount)"></promotions-list> -->
+    <products-list items="ctrl.products" on-add-to-cart="ctrl.addProductToCart(product, amount)"></products-list>
+  </page-content>
+  <page-footer></page-footer>
 
   <!-- TODO: fallback -->
   <!--<script src="../node_modules/angular/angular.js"></script>-->
